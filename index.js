@@ -30,22 +30,22 @@ let tehkotak = {
   waktu : 800
 }
 
-beli(100000, sabun)
+beli(20000, sabun)
   .then( (kembalian1) => {
-    beli(kembalian1, sampo)
-      .then( (kembalian2) => {
-        beli(kembalian2, permen)
-          .then( (kembalian3) => {
-            beli(kembalian3, rokok)
-              .then( (kembalian4) => {
-                beli(kembalian4, tehkotak)
-                  .then( (kembalian5) => {
-                    console.log(`Uang sisa ${kembalian5} kusimpan ke dalam tabungan.`)
-                  })
-              } )
-          })
-      })
+    return beli(kembalian1, sampo)
   })
-  .catch( (err) => {
-    console.log(err)
+  .then( (kembalian2) => {
+    return beli(kembalian2, permen)
+  })
+  .then( (kembalian3) => {
+    return beli(kembalian3, rokok)
+  })
+  .then( (kembalian4) => {
+    return beli(kembalian4, tehkotak)
+  })
+  .then( (kembalian5) => {
+    console.log(`Uang sisa ${kembalian5} kusimpan ke dalam tabungan.`)
+  })
+  .catch( (sisa) => {
+    console.log(`Uang tidak cukup nih, sisa hanya ${sisa}`)
   })
