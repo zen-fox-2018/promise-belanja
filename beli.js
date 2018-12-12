@@ -12,4 +12,29 @@ function beli(uang, obj, cb){
   }, obj.waktu);
 }
 
-module.exports = beli;
+function beliPromise(uang,obj){
+  console.log(`Saya pergi membeli ${obj.item}`)
+  let promise = new Promise(function(resolve,reject){
+    setTimeout(function(){
+      let kembalian = uang - obj.harga
+      if(kembalian > 0) {
+        let objectResolve = {
+          kalimat : `saya sudah membeli ${obj.item} uang kembaliannya ${kembalian}`,
+          sisaUang : kembalian
+        }
+        resolve (objectResolve)
+      }
+      else {
+        let objectReject = {
+          kalimat : `uang gk cukup nih buat beli ${obj.item} sisa uang lu cuma ${uang}`,
+          sisaUang : uang
+        }
+        reject (objectReject)
+      }
+    }, obj.waktu)
+  })
+
+  return promise
+}
+
+module.exports = {beli, beliPromise};
