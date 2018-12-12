@@ -41,21 +41,16 @@ let penggaris =
 
 beli(5000, buku)
     .then(function (kembalian) {
-        console.log(kembalian)
         return beli(kembalian, pena)
     })
     .then(function (kembalian) {
-        console.log(kembalian)
         return beli(kembalian, pensil)
     })
     .then(function (kembalian) {
-        console.log(kembalian)
         return beli(kembalian, penghapus)
     })
     .then(function (kembalian) {
-        console.log(kembalian)
         return beli(kembalian, penggaris)
     })
     .catch(function (err) {
-        console.log(err)
     })
